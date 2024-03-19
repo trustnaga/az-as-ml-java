@@ -31,7 +31,6 @@ public class FontDoorService {
     @Value("${frontendEndpointName}")
     private String frontendEndpointName;
 
-
     @Autowired
     private AzureTokenService azureTokenService;
     
