@@ -46,7 +46,7 @@ public class FontDoorService {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
 
-        //System.out.printf("**********Token code: " + azureTokenService.getAccessToken());
+       System.out.printf("**********Token code: " + azureTokenService.getAccessToken());
        conn.setRequestProperty("Authorization", "Bearer " + azureTokenService.getAccessToken());
         conn.setRequestProperty("Accept","application/json");
         conn.setRequestProperty("Content-Type", "application/json");
