@@ -12,23 +12,11 @@ import com.azure.identity.DefaultAzureCredentialBuilder;
 @Service
 public class AzureTokenService {
 
-    @Value("${managedIdentityClientEnabled:false}")
-    private Boolean managedIdentityClientEnabled;
-
-    @Value("${managedIdentityClientId}")
-    private String managedIdentityClientId;
-
+   
    
     public String getAccessToken() {
         try {
-            DefaultAzureCredential tokenCredential=null;
-            if( managedIdentityClientEnabled) {
-                // Use the managed identity
-                tokenCredential = new DefaultAzureCredentialBuilder().managedIdentityClientId(managedIdentityClientId).build();
-            }else{
-                // Use the default credential
-                tokenCredential = new DefaultAzureCredentialBuilder().build();
-            }
+            DefaultAzureCredential tokenCredential = new DefaultAzureCredentialBuilder().build(); 
             TokenRequestContext requestContext = new TokenRequestContext().addScopes("https://management.azure.com/.default");
             return tokenCredential.getToken(requestContext).block().getToken();
         } catch (Exception e) {
